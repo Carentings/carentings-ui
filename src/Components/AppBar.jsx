@@ -35,7 +35,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="fixed" sx={{ top: 0,backgroundColor:'transparent'}}>
+    <AppBar position="fixed" sx={{ top: 0,backgroundColor:'transparent', paddingTop: '15px'}} elevation={0}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -89,7 +89,7 @@ function ResponsiveAppBar() {
              
                 key={page}
                 onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'black', display: 'block' }}
               >
                 {page}
               </Button>
@@ -121,8 +121,8 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu></>:<>
-           <Button  style={{  marginRight: 15 }} variant="outlined" color ="inherit" >Login</Button>
-           <Button  variant="outlined" color ="inherit">SignUp</Button>
+           <Button  style={{  marginRight: 15, color: 'black' }} variant="outlined" color ="inherit" >Login</Button>
+           <Button  style={{  marginRight: 15, color: 'black' }}variant="outlined" color ="inherit">Sign Up</Button>
           </> }
            
         
