@@ -1,71 +1,108 @@
 import AppBar from "../Components/AppBar";
 import MediaCard from "../Components/Card";
-import React from 'react';
-import { Grid } from '@mui/material';
+import React from "react";
+import { Divider, Grid, Typography } from "@mui/material";
+import Supplier from "../Components/Supplier";
 
 const products = [
   {
-    id: 1,
-    name: 'Connect 4',
-    location: 'New York, NY',
-    price: "$19.99",
-    image: require("../Assets/Images/CONNECT4.jpeg"),
+    supplierId: 1,
+    supplierName: "Griselda Lazo ",
+    products: [
+      {
+        id: 1,
+        name: "Connect 4",
+        location: "Fremont,CA",
+        price: "$19.99",
+        image: require("../Assets/Images/CONNECT4.jpeg"),
+      },
+      {
+        id: 2,
+        name: "Soft Play",
+        location: "Fremont,CA",
+        price: "$24.99",
+        image: require("../Assets/Images/GAME2.JPG"),
+      },
+      {
+        id: 3,
+        name: "Corn Hole",
+        location: "Fremont,CA",
+        price: "$29.99",
+        image: require("../Assets/Images/GAME3.jpeg"),
+      },
+      {
+        id: 4,
+        name: "Connect 4",
+        location: "Fremont,CA",
+        price: "$19.99",
+        image: require("../Assets/Images/CONNECT4.jpeg"),
+      },
+      // Add more products for Supplier A as needed
+    ],
   },
   {
-    id: 2,
-    name: 'Soft Play',
-    location: 'Los Angeles, CA',
-    price: "$24.99",
-    image: require("../Assets/Images/GAME2.JPG"),
+    supplierId: 2,
+    supplierName: "Erin Green",
+    products: [
+      {
+        id: 1,
+        name: "Connect 4",
+        location: "Boston,MA",
+        price: "$19.99",
+        image: require("../Assets/Images/CONNECT4.jpeg"),
+      },
+      {
+        id: 2,
+        name: "Soft Play",
+        location: "Boston,MA",
+        price: "$24.99",
+        image: require("../Assets/Images/GAME2.JPG"),
+      },
+      {
+        id: 3,
+        name: "Corn Hole",
+        location: "Boston,MA",
+        price: "$29.99",
+        image: require("../Assets/Images/GAME3.jpeg"),
+      },
+       {
+        id: 4,
+        name: "Connect 4",
+        location: "Boston,MA",
+        price: "$19.99",
+        image: require("../Assets/Images/CONNECT4.jpeg"),
+      },
+      // Add more products for Supplier B as needed
+    ],
   },
-  {
-    id: 3,
-    name: 'Corn Hole',
-    location: 'Chicago, IL',
-    price: '$29.99',
-    image: require("../Assets/Images/GAME3.jpeg"),
-  },
-  {
-    id: 1,
-    name: 'Connect 4',
-    location: 'New York, NY',
-    price: "$19.99",
-    image: require("../Assets/Images/CONNECT4.jpeg"),
-  },
-  {
-    id: 2,
-    name: 'Soft Play',
-    location: 'Los Angeles, CA',
-    price: "$24.99",
-    image: require("../Assets/Images/GAME2.JPG"),
-  },
-  {
-    id: 3,
-    name: 'Corn Hole',
-    location: 'Chicago, IL',
-    price: '$29.99',
-    image: require("../Assets/Images/GAME3.jpeg"),
-  },
-  // Add more products as needed
+  // Add more suppliers and their products as needed
 ];
-
-export default function ShoppingPage() {
+export default function ShoppingPage(props) {
   return (
-    <div>
+    <div style={{ padding: "0 80px" }}>
       <AppBar />
-      <Grid container spacing={2} style={{marginTop:"60px"}}>
-        {products.map((product) => (
-          <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
-            <MediaCard
-           // style={{"marignTop":"60px"}}
-              name={product.name}
-              location={product.location}
-              price={product.price}
-              image={product.image}
-            />
+      {products.map((item) => (
+        <div key={item.supplierId}>
+          <Supplier name={item.supplierName} />
+          <Grid container spacing={2}>
+            {item.products.map((product) => (
+              <Grid item key={product.id} xs={12} sm={6} md={4} lg={3}>
+                <MediaCard
+                  name={product.name}
+                  location={product.location}
+                  price={product.price}
+                  image={product.image}
+                />
+              </Grid>
+            ))}
           </Grid>
-        ))}
-      </Grid>
+           <div>
+        <Divider style={{ marginTop: "20px" }} />
+      </div>
+        </div>
+        
+      ))}
+     
     </div>
   );
 }

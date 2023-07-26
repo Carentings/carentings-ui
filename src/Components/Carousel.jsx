@@ -15,6 +15,8 @@ const CarouselContainer = styled(Carousel)({
   
     '& img': {
       maxWidth: '100%',
+      height:'100vh',
+      width:'100vh',
       maxHeight: '100%',
       objectFit: 'contain',
     
@@ -29,9 +31,7 @@ function Container() {
         <div>
           <img src={Tugofwar} alt="Tugofwar" />
         </div>
-        <div>
-          <img src={Outdoorgames} alt="Outdoorgames" />
-        </div>
+      
       </CarouselContainer>
       );
 }

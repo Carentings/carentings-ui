@@ -8,7 +8,7 @@ export default function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/shoppingPage" element={<ShoppingPage />} />
+        <Route path="/shoppingPage" element={<ShoppingPage style={{backgroundColor:'black'}}/>} />
       </Routes>
     </Router>
   );

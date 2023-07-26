@@ -1,24 +1,27 @@
-import * as React from 'react';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
-const pages = ['About Us', 'Contact Us', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import  React , { useRef }from "react";
+import AppBar from "@mui/material/AppBar";
+import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import Menu from "@mui/material/Menu";
+import MenuIcon from "@mui/icons-material/Menu";
+import Container from "@mui/material/Container";
+import Avatar from "@mui/material/Avatar";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import MenuItem from "@mui/material/MenuItem";
+import AdbIcon from "@mui/icons-material/Adb";
+import logo from "../Assets/Images/carentings-logo.png";
 
-function ResponsiveAppBar() {
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+const pages = ["About Us", "Contact Us", "Testimonials"];
+const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
+function ResponsiveAppBar({aboutUsRef}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-  const[loggedIn,setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -27,6 +30,7 @@ function ResponsiveAppBar() {
   };
 
   const handleCloseNavMenu = () => {
+    debugger
     setAnchorElNav(null);
   };
 
@@ -34,14 +38,32 @@ function ResponsiveAppBar() {
     setAnchorElUser(null);
   };
 
+  const contactRef = useRef(null); // Ref for the Contact Us section
+
+  // ... (other code)
+
+  const handleContactClick = () => {
+    // Scroll to the Contact Us section when "Contact Us" is clicked
+    debugger
+    if (aboutUsRef && aboutUsRef.current) {
+      aboutUsRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };  
+ 
+
   return (
-    <AppBar position="fixed" sx={{ top: 0,backgroundColor:'transparent'}}>
+    <AppBar position="fixed" sx={{ top: 0, backgroundColor: "#323232" }} >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-        
+          <img
+            src={logo}
+            className="App-logo"
+            alt="logo"
+            style={{ height: "60px", width: "120px" }}
+          />
 
-          <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+          <logo />
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -52,80 +74,78 @@ function ResponsiveAppBar() {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-           
-          </Box>
-
-        
-          {pages.map((page) => (
-
+            
+            {pages.map((page) => (
               <Button
-             
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+              key={page}
+              onClick={page ==  "Contact Us" ? handleContactClick : handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
               </Button>
             ))}
-            {loggedIn? <> <Tooltip title="Open settings">
-              <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: '45px' }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
+          </Box>
+
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}></Box>
+
+          {pages.map((page) => (
+            <Button
+              key={page}
+              onClick={page ==  "Contact Us" ? handleContactClick : handleCloseNavMenu}
+              sx={{ my: 2, color: "white", display: "block" }}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu></>:<>
-           <Button  style={{  marginRight: 15 }} variant="outlined" color ="inherit" >Login</Button>
-           <Button  variant="outlined" color ="inherit">SignUp</Button>
-          </> }
-           
-        
+              {page}
+            </Button>
+          ))}
+          {loggedIn ? (
+            <>
+              {" "}
+              <Tooltip title="Open settings">
+                <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              </Tooltip>
+              <Menu
+                sx={{ mt: "45px" }}
+                id="menu-appbar"
+                anchorEl={anchorElUser}
+                anchorOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+                open={Boolean(anchorElUser)}
+                onClose={handleCloseUserMenu}
+              >
+                {settings.map((setting) => (
+                  <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </>
+          ) : (
+            <>
+              <Button
+                style={{ marginRight: 15 }}
+                variant="outlined"
+                color="inherit"
+              >
+                Login
+              </Button>
+              <Button variant="outlined" color="inherit">
+                SignUp
+              </Button>
+            </>
+          )}
+
+          <IconButton color="inherit" style={{ marginLeft: "10px" }}>
+            <ShoppingCartIcon />
+          </IconButton>
         </Toolbar>
       </Container>
     </AppBar>
