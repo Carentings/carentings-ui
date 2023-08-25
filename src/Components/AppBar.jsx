@@ -1,4 +1,4 @@
-import  React , { useRef }from "react";
+import React, { useRef } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -18,7 +18,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 const pages = ["About Us", "Contact Us", "Testimonials"];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-function ResponsiveAppBar({aboutUsRef}) {
+function ResponsiveAppBar(props) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -30,7 +30,7 @@ function ResponsiveAppBar({aboutUsRef}) {
   };
 
   const handleCloseNavMenu = () => {
-    debugger
+    debugger;
     setAnchorElNav(null);
   };
 
@@ -44,15 +44,14 @@ function ResponsiveAppBar({aboutUsRef}) {
 
   const handleContactClick = () => {
     // Scroll to the Contact Us section when "Contact Us" is clicked
-    debugger
-    if (aboutUsRef && aboutUsRef.current) {
-      aboutUsRef.current.scrollIntoView({ behavior: "smooth" });
+    debugger;
+    if (props && props.current) {
+      props.current.scrollIntoView({ behavior: "smooth" });
     }
-  };  
- 
+  };
 
   return (
-    <AppBar position="fixed" sx={{ top: 0, backgroundColor: "#323232" }} >
+    <AppBar position={props.position} sx={props.sx} elevation={props.elevation}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img
@@ -74,12 +73,14 @@ function ResponsiveAppBar({aboutUsRef}) {
             >
               <MenuIcon />
             </IconButton>
-            
+
             {pages.map((page) => (
               <Button
-              key={page}
-              onClick={page ==  "Contact Us" ? handleContactClick : handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+                key={page}
+                onClick={
+                  page == "Contact Us" ? handleContactClick : handleCloseNavMenu
+                }
+                sx={{ my: 2, color: props.buttonColor, display: "block" }}
               >
                 {page}
               </Button>
@@ -91,8 +92,10 @@ function ResponsiveAppBar({aboutUsRef}) {
           {pages.map((page) => (
             <Button
               key={page}
-              onClick={page ==  "Contact Us" ? handleContactClick : handleCloseNavMenu}
-              sx={{ my: 2, color: "white", display: "block" }}
+              onClick={
+                page == "Contact Us" ? handleContactClick : handleCloseNavMenu
+              }
+              sx={{ my: 2, color: props.buttonColor, display: "block" }}
             >
               {page}
             </Button>
@@ -131,19 +134,21 @@ function ResponsiveAppBar({aboutUsRef}) {
           ) : (
             <>
               <Button
-                style={{ marginRight: 15 }}
+                style={{ marginRight: 15,  color:props.buttonColor }}
                 variant="outlined"
-                color="inherit"
+                //color={props.buttonColor}
               >
                 Login
               </Button>
-              <Button variant="outlined" color="inherit">
+              <Button
+              style={{ marginRight: 15,  color:props.buttonColor }}
+               variant="outlined" /* color={props.buttonColor} */>
                 SignUp
               </Button>
             </>
           )}
 
-          <IconButton color="inherit" style={{ marginLeft: "10px" }}>
+          <IconButton/*  color={props.buttonColor} */ style={{ marginLeft: "10px", color:props.buttonColor }}>
             <ShoppingCartIcon />
           </IconButton>
         </Toolbar>

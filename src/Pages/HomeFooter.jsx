@@ -23,7 +23,7 @@ const Footer = () => {
 
       {/* Instagram Link */}
       <IconButton
-        href="https://www.instagram.com/your_instagram_username/"
+        href="https://www.instagram.com/carentings/?hl=en"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Instagram"

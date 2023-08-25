@@ -80,7 +80,7 @@ const products = [
 export default function ShoppingPage(props) {
   return (
     <div style={{ padding: "0 80px" }}>
-      <AppBar />
+      <AppBar position= "fixed" sx={{ top: 0, backgroundColor: "#323232" }} buttonColor="white"/>
       {products.map((item) => (
         <div key={item.supplierId}>
           <Supplier name={item.supplierName} />

@@ -11,8 +11,7 @@ import { useNavigate } from 'react-router-dom';
 
 const useStyles = makeStyles(() => ({
   formControl: {
-
-    position: 'absolute',//df
+    position: 'absolute',
   },
   zipCodeField: {
     marginTop: '16px',
@@ -98,7 +97,8 @@ function InputForm() {
   };
 
   return (
-    <FormControl component="form" onSubmit={handleSubmit} className={classes.formControl}>
+    <div>
+      <FormControl component="form" onSubmit={handleSubmit} className={classes.formControl} >
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DatePicker
           label="Event Date"
@@ -107,6 +107,7 @@ function InputForm() {
           onChange={handleEventDateChange}
           disablePast
           error={eventDateError}
+          
         />
       </LocalizationProvider>
 
@@ -121,6 +122,11 @@ function InputForm() {
         autoComplete="off"
         className={classes.zipCodeField}
         error={ZipcodeError}
+      // InputProps={{
+      // style: {
+      //   color: 'white', // Set text color to white
+      // },
+      // }}
       />
 
       <Autocomplete
@@ -139,14 +145,19 @@ function InputForm() {
       />
       <Button
         variant="contained"
-        color="inherit"
+        // color="inherit"
         type="submit"
         onClick={handleButtonClick}
-        style={{ marginTop: '16px', background: '#1C76D2', color: 'white' }}
+        style={{ marginTop: '16px', background: '#000000', color: 'white' }}
       >
         Submit
       </Button>
+
+      
     </FormControl>
+    </div>
+    
+    
   );
 }
 
