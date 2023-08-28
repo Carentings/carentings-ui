@@ -21,9 +21,6 @@ const AboutUsPage = () => {
           Thank you for being a part of our journey. We look forward to serving you and making renting a breeze!
         </Typography>
       </Box>
-      <Button variant="contained" color="primary" sx={{ borderRadius: '30px' }}>
-        Get Started
-      </Button>
     </Container>
   );
 };

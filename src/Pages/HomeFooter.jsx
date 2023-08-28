@@ -34,7 +34,7 @@ const Footer = () => {
 
       {/* Facebook Link */}
       <IconButton
-        href="https://www.facebook.com/your_facebook_page/"
+        href="https://www.facebook.com/profile.php?id=100094657857054&mibextid=LQQJ4d"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Facebook"
@@ -46,7 +46,7 @@ const Footer = () => {
       {/* Email */}
       <Box display="flex" alignItems="center">
         <MailOutlineIcon style={{ marginRight: '8px' }} />
-        <Typography variant="body2">contact@company.com</Typography>
+        <Typography variant="body2">carentings@gmail.com</Typography>
       </Box>
     </Box>
   );

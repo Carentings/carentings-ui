@@ -5,18 +5,19 @@ import { styled } from '@mui/material/styles';
 const testimonialsData = [
   {
     id: 1,
-    name: 'John Doe',
+    name: 'Griselda',
     avatarSrc: 'path/to/avatar1.jpg',
     feedback:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis tellus ac libero sagittis venenatis. Nullam a leo varius, euismod justo non, gravida orci.',
-  },
+      "Recommend! Perfect for activities for hosting party kids/adults and great price"
+    }
+      ,
   {
     id: 2,
     name: 'Jane Smith',
     avatarSrc: 'path/to/avatar2.jpg',
     feedback:
-      'Vivamus vel ante eget nisi aliquet fermentum. Nulla facilisi. Maecenas rhoncus, nisl vitae feugiat scelerisque, neque tortor viverra elit, in scelerisque odio sem in libero.',
-  },
+      'I am thoroughly impressed with the exceptional customer service and top-notch game quality provided by this platform.Their dedication to customer satisfaction truly sets them apart. Kudos to the team for their outstanding efforts in making game rental such a joy.'
+    },
   // Add more testimonials as needed
 ];
 
@@ -52,6 +53,7 @@ const TestimonialPage = () => {
           gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
           gap: '16px',
           marginTop: '30px',
+          marginBottom:'30px'
         }}
       >
         {testimonialsData.map((testimonial) => (
